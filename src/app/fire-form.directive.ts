@@ -56,7 +56,7 @@ export class FireFormDirective implements OnInit, OnDestroy {
             this.state = 'synced';
           }
         }),
-        take(1)
+        // take(1) // removed to allow live sync
       )
       .subscribe();
   }

@@ -18,7 +18,7 @@ export class FormDemoComponent implements OnInit {
 
   ngOnInit() {
     this.formInit();
-    this.formSync();
+    this.myDoc = this.afs.doc('contacts/test').valueChanges();
   }
 
   formInit() {
@@ -27,17 +27,6 @@ export class FormDemoComponent implements OnInit {
       career: ['', Validators.required],
       bio: ['']
     });
-  }
-
-  formSync() {
-    this.myDoc = this.afs.doc('contacts/test').valueChanges();
-    this.afs
-      .doc('contacts/test')
-      .valueChanges()
-      .subscribe(a => {
-        this.myForm.patchValue(a);
-        this.state = 'synced';
-      });
   }
 
   changeHandler(e) {
