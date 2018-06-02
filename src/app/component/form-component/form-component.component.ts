@@ -5,8 +5,8 @@ import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-form-component',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  templateUrl: './form-component.component.html',
+  styleUrls: ['./form-component.component.scss']
 })
 export class FormComponentComponent implements OnInit {
   @Input() company: string;

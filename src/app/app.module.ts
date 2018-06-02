@@ -16,10 +16,9 @@ import {
   MatGridListModule
 } from '@angular/material';
 import { FireFormDirective } from './fire-form.directive';
-import { FormDemoComponent } from './form-demo/form-demo.component';
-import { FormComponentComponent } from './component/form/form.component';
+import { FormComponentComponent } from './component/form-component/form-component.component';
 import { environment } from '../environments/environment';
-import { FormContainerComponent } from './container/form/form.component';
+import { FormContainerComponent } from './container/form-container/form-container.component';
 
 const routes: Routes = [
   {
@@ -38,7 +37,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, FormDemoComponent, FireFormDirective, FormComponentComponent, FormContainerComponent],
+  declarations: [AppComponent, FireFormDirective, FormComponentComponent, FormContainerComponent],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),

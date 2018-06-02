@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-form',
+  selector: 'app-form-container',
   template: `
     <app-form-component [company]="company"></app-form-component>
   `,
