@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
-  selector: 'form-demo',
-  templateUrl: './form-demo.component.html',
-  styleUrls: ['./form-demo.component.scss']
+  selector: 'app-form-component',
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.scss']
 })
-export class FormDemoComponent implements OnInit {
+export class FormComponentComponent implements OnInit {
+  @Input() company: string;
   myForm: FormGroup;
   myDoc;
-
   state: string;
 
   constructor(private fb: FormBuilder, private afs: AngularFirestore) {}
@@ -30,7 +30,6 @@ export class FormDemoComponent implements OnInit {
   }
 
   changeHandler(e) {
-    // console.log(e)
     this.state = e;
   }
 }

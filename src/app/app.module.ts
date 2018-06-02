@@ -15,15 +15,16 @@ import {
   MatSelectModule,
   MatGridListModule
 } from '@angular/material';
-import { FormDemoComponent } from './form-demo/form-demo.component';
 import { FireFormDirective } from './fire-form.directive';
-import { FormComponentComponent } from './form-component/form-component.component';
+import { FormDemoComponent } from './form-demo/form-demo.component';
+import { FormComponentComponent } from './component/form/form.component';
 import { environment } from '../environments/environment';
+import { FormContainerComponent } from './container/form/form.component';
 
 const routes: Routes = [
   {
     path: 'form',
-    component: FormDemoComponent
+    component: FormContainerComponent
   },
   {
     path: '',
@@ -32,12 +33,12 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: FormDemoComponent
+    component: FormContainerComponent
   }
 ];
 
 @NgModule({
-  declarations: [AppComponent, FormDemoComponent, FireFormDirective, FormComponentComponent],
+  declarations: [AppComponent, FormDemoComponent, FireFormDirective, FormComponentComponent, FormContainerComponent],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),

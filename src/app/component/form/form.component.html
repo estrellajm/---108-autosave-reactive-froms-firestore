@@ -1,4 +1,13 @@
-<form [formGroup]="form" fireForm path="path" (stateChange)="changeHandler($event)">
+<div *ngIf="state === 'synced'" class="notification is-success">
+  Form is synced with Firestore
+</div>
+<div *ngIf="state === 'modified'" class="notification is-warning">
+  Form has unsaved changes
+</div>
+<div *ngIf="state === 'error'" class="notification is-danger">
+  Form tried and failed to save to Firestore
+</div>
+<form [formGroup]="myForm" fireForm path="contacts/{{company}}" (stateChange)="changeHandler($event)">
   <div class="columns">
     <div class="column">
       <h3>Reactive Form Data</h3>
@@ -32,13 +41,3 @@
   <hr>
   <button mat-raised-button color="primary" [disabled]="myForm.invalid || state !== 'modified'">Save</button>
 </form>
-
-<div *ngIf="state === 'synced'" class="notification is-success">
-  Form is synced with Firestore
-</div>
-<div *ngIf="state === 'modified'" class="notification is-warning">
-  Form has unsaved changes
-</div>
-<div *ngIf="state === 'error'" class="notification is-danger">
-  Form tried and failed to save to Firestore
-</div>
