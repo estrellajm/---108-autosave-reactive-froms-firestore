@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -8,6 +7,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
 import {
   MatIconModule,
   MatInputModule,
@@ -17,23 +17,30 @@ import {
 } from '@angular/material';
 import { FormDemoComponent } from './form-demo/form-demo.component';
 import { FireFormDirective } from './fire-form.directive';
+import { FormComponentComponent } from './form-component/form-component.component';
+import { environment } from '../environments/environment';
 
-// Add your project credentials
-const firebase = {
-  apiKey: '<your-key>',
-  authDomain: '<your-project-authdomain>',
-  databaseURL: '<your-database-URL>',
-  projectId: '<your-project-id>',
-  storageBucket: '<your-storage-bucket>',
-  messagingSenderId: '<your-messaging-sender-id>'
-};
+const routes: Routes = [
+  {
+    path: 'form',
+    component: FormDemoComponent
+  },
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    component: FormDemoComponent
+  }
+];
 
 @NgModule({
-  declarations: [AppComponent, FormDemoComponent, FireFormDirective],
+  declarations: [AppComponent, FormDemoComponent, FireFormDirective, FormComponentComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    AngularFireModule.initializeApp(firebase),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
@@ -43,7 +50,8 @@ const firebase = {
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
-    MatGridListModule
+    MatGridListModule,
+    RouterModule.forRoot(routes)
   ],
   bootstrap: [AppComponent]
 })
